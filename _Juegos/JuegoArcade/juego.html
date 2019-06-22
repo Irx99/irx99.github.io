@@ -1,0 +1,262 @@
+<html>
+	<head>
+		<link rel="shortcut icon" href="imagenes/DFG.png">
+		<title>FINAL BATTLE</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<script type="text/javascript" src="javascript.js"></script>
+		<script type="text/javascript" src="animaciones.js"></script>
+	</head>
+	<body id="body" onload="onload()">
+		<div id="caja">
+			<div id="campeones">
+				<!-- Otros -->
+				<img id="Animado_Veigar_E" src="imagenes/VeigarE.png"></img>
+				<img id="victoria" src="imagenes/Victoria.png"></img>
+				<img id="derrota" src="imagenes/Derrota.png"></img>
+				<img id="continuar" src="imagenes/Continue.png" onclick="F_continuar()"></img>
+				<!-- Ataques Veigar -->
+				<img id="Animado_Veigar_W_Under1" src="imagenes/Veigar_W_Under1.png"></img>
+				<img id="Animado_Veigar_W_Under2" src="imagenes/Veigar_W_Under2.png"></img>
+				<img id="Animado_Veigar_W_Cube1" src="imagenes/Veigar_W_Cube.png"></img>
+				<img id="Animado_Veigar_W_Cube2" src="imagenes/Veigar_W_Cube.png"></img>
+				
+				<img id="fondoAuxiliarE_Hecarim" src="imagenes/Fondo_Auxiliar_E_Hecarim.png"></img>
+				<img id="fondoAuxiliarE_Hecarim2" src="imagenes/Fondo_Auxiliar_E_Hecarim.png"></img>
+				<!-- Miss Fortune -->
+				<!-- Animacion Habilidades -->
+				<img id="Animado1_MissFortune_Q" src="imagenes/MissFortune_Q.png"></img>
+				<img id="Animado2_MissFortune_Q" src="imagenes/MissFortune_Q.png"></img>
+				<img id="Animado3_MissFortune_Q" src="imagenes/MissFortune_Q.png"></img>
+				<img id="Animado4_MissFortune_Q" src="imagenes/MissFortune_Q.png"></img>
+				
+				<img class="AnimadoE_MissFortune" id="Animado1_MissFortune_E" src="imagenes/MissFortune_E1.png"></img>
+				<img class="AnimadoE_MissFortune" id="Animado2_MissFortune_E" src="imagenes/MissFortune_E2.png"></img>
+				<img class="AnimadoE_MissFortune" id="Animado3_MissFortune_E" src="imagenes/MissFortune_E3.png"></img>
+				<img class="AnimadoE_MissFortune" id="Animado4_MissFortune_E" src="imagenes/MissFortune_E4.png"></img>
+				
+				<img id="Animado1_MissFortune_R" src="imagenes/MissFortune_R1.png"></img>
+				<img id="Animado2_MissFortune_R" src="imagenes/MissFortune_R2.png"></img>
+				<img id="Animado3_MissFortune_R" src="imagenes/MissFortune_R3.png"></img>
+				<img id="Animado4_MissFortune_R" src="imagenes/MissFortune_R4.png"></img>
+				<img id="Animado5_MissFortune_R" src="imagenes/MissFortune_R5.png"></img>
+				<img id="Animado6_MissFortune_R" src="imagenes/MissFortune_R6.png"></img>
+				<img id="Animado7_MissFortune_R" src="imagenes/MissFortune_R7.png"></img>
+				<img id="Animado8_MissFortune_R" src="imagenes/MissFortune_R8.png"></img>
+				<!-- Fin animaciones -->
+				<img id="turnoMissFortune" src="imagenes/turno.png"></img>
+				<img id="stunMissFortune" src="imagenes/stun.png"></img>
+				<img id="missFortune" src="imagenes/BasicSpriteMF_x2.png"></img>
+				<img id="missFortune_WBuffed" src="imagenes/BasicSpriteMF_x2_WBuffed.png"></img>		
+				<img class="buffMissFortune" id="DMG_MissFortune" src="imagenes/DMG.png"></img>
+				<img class="buffMissFortune" id="SPD_MissFortune" src="imagenes/SPD.png"></img>
+				<img class="buffMissFortune" id="RST_MissFortune" src="imagenes/RST.png"></img>
+				<!-- Hecarim -->
+				<!-- Animacion Habilidades -->
+				<img id="Animado1_Q_Hecarim" src="imagenes/Hecarim_Q_2.png"></img>
+				<img id="Animado2_Q_Hecarim" src="imagenes/Hecarim_Q_2.png"></img>
+				
+				<img id="Animado3_Q_Hecarim" src="imagenes/Hecarim_Q_1.png"></img>
+				<img id="Animado4_Q_Hecarim" src="imagenes/Hecarim_Q_2.png"></img>
+				<img id="Animado5_Q_Hecarim" src="imagenes/Hecarim_Q_3.png"></img>
+				
+				<img id="Animado1_Q_HecarimBuffed" src="imagenes/Hecarim_Q_2Buffed.png"></img>
+				<img id="Animado2_Q_HecarimBuffed" src="imagenes/Hecarim_Q_2Buffed.png"></img>
+				
+				<img id="Animado3_Q_HecarimBuffed" src="imagenes/Hecarim_Q_1Buffed.png"></img>
+				<img id="Animado4_Q_HecarimBuffed" src="imagenes/Hecarim_Q_2Buffed.png"></img>
+				<img id="Animado5_Q_HecarimBuffed" src="imagenes/Hecarim_Q_3Buffed.png"></img>
+				
+				<img id="Animado_W_Hecarim_Under1" src="imagenes/Hecarim_W_Under1.png"></img>
+				<img id="Animado_W_Hecarim_Under2" src="imagenes/Hecarim_W_Under2.png"></img>
+				
+				<img id="Animado_W_Hecarim_Corazon1" src="imagenes/Hecarim_W_Corazon1.png"></img>	
+				<img id="Animado_W_Hecarim_Corazon2" src="imagenes/Hecarim_W_Corazon2.png"></img>
+				<img id="Animado_W_Hecarim_Corazon3" src="imagenes/Hecarim_W_Corazon3.png"></img>
+				<img id="Animado_W_Hecarim_Corazon4" src="imagenes/Hecarim_W_Corazon4.png"></img>
+				<img id="Animado_W_Hecarim_Corazon5" src="imagenes/Hecarim_W_Corazon5.png"></img>
+				<img id="Animado_W_Hecarim_Corazon6" src="imagenes/Hecarim_W_Corazon6.png"></img>
+				<img id="Animado_W_Hecarim_Corazon7" src="imagenes/Hecarim_W_Corazon7.png"></img>
+				
+				<img id="Animado_E_Hecarim_Under1_Pos1" class="Animado_E_Hecarim_Under_PosCenter" src="imagenes/Hecarim_E_Under1_Pos1.png"></img>
+				<img id="Animado_E_Hecarim_Under1_Pos2" class="Animado_E_Hecarim_Under_PosCenter" src="imagenes/Hecarim_E_Under1_Pos2.png"></img>
+				
+				<img id="Animado_E_Hecarim_Under2_Pos1_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under2_Pos1.png"></img>
+				<img id="Animado_E_Hecarim_Under2_Pos2_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under2_Pos2.png"></img>
+				
+				<img id="Animado_E_Hecarim_Under2_Pos1_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under2_Pos1.png"></img>
+				<img id="Animado_E_Hecarim_Under2_Pos2_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under2_Pos2.png"></img>
+				
+				<img id="Animado_E_Hecarim_Under3_Pos1_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos1.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos2_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos2.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos3_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos3.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos4_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos4.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos5_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos5.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos6_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos6.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos7_1" class="Animado_E_Hecarim_Under_Pos1" src="imagenes/Hecarim_E_Under3_Pos7.png"></img>
+				
+				<img id="Animado_E_Hecarim_Under3_Pos1_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos1.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos2_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos2.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos3_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos3.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos4_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos4.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos5_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos5.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos6_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos6.png"></img>
+				<img id="Animado_E_Hecarim_Under3_Pos7_2" class="Animado_E_Hecarim_Under_Pos2" src="imagenes/Hecarim_E_Under3_Pos7.png"></img>
+				
+				<img id="Animado_R_Hecarim" src="imagenes/Hecarim_R.png"></img>
+				<img id="Animado_R_Hecarim2" src="imagenes/Hecarim_R.png"></img>
+				<img id="Animado_R_Hecarim3" src="imagenes/Hecarim_R.png"></img>
+				<!-- Fin animaciones -->
+				
+				<img id="turnoHecarim" src="imagenes/turno.png"></img>
+				<img id="stunHecarim" src="imagenes/stun.png"></img>
+				<img id="hecarim" src="imagenes/BasicSpriteHecarim_x2.png"></img>
+				<img id="hecarim_QBuffed" src="imagenes/BasicSpriteHecarim_x2_QBuffed.png"></img>				
+				<img class="buffHecarim" id="DMG_Hecarim" src="imagenes/DMG.png"></img>
+				<img class="buffHecarim" id="SPD_Hecarim"  src="imagenes/SPD.png"></img>
+				<img class="buffHecarim" id="RST_Hecarim"  src="imagenes/RST.png"></img>
+				<!-- Sona -->
+				<!-- Animacion Habilidades -->
+				<img id="Animado1_Q_Sona" src="imagenes/Sona_Q.png"></img>
+				<img id="Animado2_Q_Sona" src="imagenes/Sona_Q.png"></img>
+				<img id="Animado3_Q_Sona" src="imagenes/Sona_Q.png"></img>
+				<img id="Animado4_Q_Sona" src="imagenes/Sona_Q.png"></img>
+				
+				<img id="Animado_Q_Sona_Under" src="imagenes/Sona_Q_Under.png"></img>
+				
+				<img id="Animado1_W_Sona" src="imagenes/Sona_W.png"></img>
+				<img id="Animado2_W_Sona" src="imagenes/Sona_W.png"></img>
+				<img id="Animado3_W_Sona" src="imagenes/Sona_W.png"></img>
+				<img id="Animado4_W_Sona" src="imagenes/Sona_W.png"></img>
+				<img id="Animado5_W_Sona" src="imagenes/Sona_W.png"></img>
+				
+				<img id="Animado_W_Sona_Under" src="imagenes/Sona_W_Under.png"></img>
+				
+				<img id="Animado1_E_Sona" src="imagenes/Sona_E.png"></img>
+				<img id="Animado2_E_Sona" src="imagenes/Sona_E.png"></img>
+				<img id="Animado3_E_Sona" src="imagenes/Sona_E.png"></img>
+				<img id="Animado4_E_Sona" src="imagenes/Sona_E.png"></img>
+				<img id="Animado5_E_Sona" src="imagenes/Sona_E.png"></img>
+				
+				<img id="Animado_E_Sona_Under" src="imagenes/Sona_E_Under.png"></img>
+				
+				<img id="Animado1_R_Sona" src="imagenes/Sona_R.png"></img>
+				<img id="Animado2_R_Sona" src="imagenes/Sona_R.png"></img>
+				<img id="Animado3_R_Sona" src="imagenes/Sona_R.png"></img>
+				<img id="Animado4_R_Sona" src="imagenes/Sona_R.png"></img>
+				<!-- Fin animaciones -->
+				<img id="turnoSona" src="imagenes/turno.png"></img>
+				<img id="stunSona" src="imagenes/stun.png"></img>
+				<img id="sona" src="imagenes/BasicSpriteSona_x2.png"></img>
+				<img class="buffSona" id="DMG_Sona" src="imagenes/DMG.png"></img>
+				<img class="buffSona" id="SPD_Sona"  src="imagenes/SPD.png"></img>
+				<img class="buffSona" id="RST_Sona"  src="imagenes/RST.png"></img>
+			</div>
+			<div id="boss">
+				<!-- Interfaz -->
+				<div id="vidaVeigar"></div>
+				<!-- Animaciones Veigar-->
+				<img id="Animado_Q_Basico" src="imagenes/VeigarQ_Basic.png"></img>
+				
+				<img id="Animado_Q_toSona1" src="imagenes/VeigarQ_toSona.png"></img>
+				<img id="Animado_Q_toSona2" src="imagenes/VeigarQ_toSona.png"></img>
+				<img id="Animado_Q_toSona3" src="imagenes/VeigarQ_toSona.png"></img>
+				<img id="Animado_Q_toSona4" src="imagenes/VeigarQ_toSona.png"></img>
+				
+				<img id="Animado_Q_toHecarim1" src="imagenes/VeigarQ_toHecarim.png"></img>
+				<img id="Animado_Q_toHecarim2" src="imagenes/VeigarQ_toHecarim.png"></img>
+				<img id="Animado_Q_toHecarim3" src="imagenes/VeigarQ_toHecarim.png"></img>
+				<img id="Animado_Q_toHecarim4" src="imagenes/VeigarQ_toHecarim.png"></img>
+				
+				<img id="Animado_Q_toMissFortune1" src="imagenes/VeigarQ_toMissFortune.png"></img>
+				<img id="Animado_Q_toMissFortune2" src="imagenes/VeigarQ_toMissFortune.png"></img>
+				<img id="Animado_Q_toMissFortune3" src="imagenes/VeigarQ_toMissFortune.png"></img>
+				<img id="Animado_Q_toMissFortune4" src="imagenes/VeigarQ_toMissFortune.png"></img>
+				
+				<img id="Animado_R_Basico" src="imagenes/VeigarR_Basic.png"></img>
+				
+				<img id="Animado_R_toSona1" src="imagenes/VeigarR_toSona.png"></img>
+				<img id="Animado_R_toSona2" src="imagenes/VeigarR_toSona.png"></img>
+				<img id="Animado_R_toSona3" src="imagenes/VeigarR_toSona.png"></img>
+				<img id="Animado_R_toSona4" src="imagenes/VeigarR_toSona.png"></img>
+				
+				<img id="Animado_R_toHecarim1" src="imagenes/VeigarR_toHecarim.png"></img>
+				<img id="Animado_R_toHecarim2" src="imagenes/VeigarR_toHecarim.png"></img>
+				<img id="Animado_R_toHecarim3" src="imagenes/VeigarR_toHecarim.png"></img>
+				<img id="Animado_R_toHecarim4" src="imagenes/VeigarR_toHecarim.png"></img>
+				
+				<img id="Animado_R_toMissFortune1" src="imagenes/VeigarR_toMissFortune.png"></img>
+				<img id="Animado_R_toMissFortune2" src="imagenes/VeigarR_toMissFortune.png"></img>
+				<img id="Animado_R_toMissFortune3" src="imagenes/VeigarR_toMissFortune.png"></img>
+				<img id="Animado_R_toMissFortune4" src="imagenes/VeigarR_toMissFortune.png"></img>
+				
+				<!-- Fin animaciones -->
+				<img id="veigarLifeBar" src="imagenes/VeigarLifeBar.png"></img>
+				<img id="veigar" src="imagenes/BasicSpriteVeigarBot_x2.png"></img>
+				<img id="DFG" src="imagenes/DFG.png"></img>
+				<img class="debuff" id="quemarVeigar" src="imagenes/quemar.png"></img>
+				<img class="debuff" id="fearVeigar" src="imagenes/fear.png"></img>
+				<img class="debuff" id="stunVeigar" src="imagenes/stun.png"></img>
+				<!-- Numeros -->
+				<img class="posicion1" id="numero_0X" src="imagenes/Numero_0.png"></img>
+				<img class="posicion1" id="numero_1X" src="imagenes/Numero_1.png"></img>
+					<!-- -->
+				<img class="posicion2" id="numero_0" src="imagenes/Numero_0.png"></img>
+				<img class="posicion2" id="numero_1" src="imagenes/Numero_1.png"></img>
+				<img class="posicion2" id="numero_2" src="imagenes/Numero_2.png"></img>
+				<img class="posicion2" id="numero_3" src="imagenes/Numero_3.png"></img>
+				<img class="posicion2" id="numero_4" src="imagenes/Numero_4.png"></img>
+				<img class="posicion2" id="numero_5" src="imagenes/Numero_5.png"></img>
+				<img class="posicion2" id="numero_6" src="imagenes/Numero_6.png"></img>
+				<img class="posicion2" id="numero_7" src="imagenes/Numero_7.png"></img>
+				<img class="posicion2" id="numero_8" src="imagenes/Numero_8.png"></img>
+				<img class="posicion2" id="numero_9" src="imagenes/Numero_9.png"></img>		
+			</div>
+			<div id="habilidades">
+				<!-- Sona -->
+				<img class="habilidad_Q" id="Q_Sona" onclick="habilidad('Q')" src="imagenes/Q_Sona.png"></img>
+				<img class="habilidad_W" id="W_Sona" onclick="habilidad('W')" src="imagenes/W_Sona.png"></img>
+				<img class="habilidad_E" id="E_Sona" onclick="habilidad('E')" src="imagenes/E_Sona.png"></img>
+				<img class="habilidad_R" id="R_Sona" onclick="habilidad('R')" src="imagenes/R_Sona.png"></img>
+				<!-- Hecarim -->
+				<img class="habilidad_Q" id="Q_Hecarim" onclick="habilidad('Q')" src="imagenes/Q_Hecarim.png"></img>
+				<img class="habilidad_W" id="W_Hecarim" onclick="habilidad('W')" src="imagenes/W_Hecarim.png"></img>
+				<img class="habilidad_E" id="E_Hecarim" onclick="habilidad('E')" src="imagenes/E_Hecarim.png"></img>
+				<img class="habilidad_R" id="R_Hecarim" onclick="habilidad('R')" src="imagenes/R_Hecarim.png"></img>
+				<!-- Miss Fortune -->
+				<img class="habilidad_Q" id="Q_MissFortune" onclick="habilidad('Q')" src="imagenes/Q_MissFortune.png"></img>
+				<img class="habilidad_W" id="W_MissFortune" onclick="habilidad('W')" src="imagenes/W_MissFortune.png"></img>
+				<img class="habilidad_E" id="E_MissFortune" onclick="habilidad('E')" src="imagenes/E_MissFortune.png"></img>
+				<img class="habilidad_R" id="R_MissFortune" onclick="habilidad('R')" src="imagenes/R_MissFortune.png"></img>
+				<!-- CDs -->
+				<img class="habilidad_Q" id="Q_CD_1sec"  src="imagenes/1secCD.png"></img>
+				<img class="habilidad_Q" id="Q_CD_2sec"  src="imagenes/2secCD.png"></img>
+				<img class="habilidad_Q" id="Q_CD_3sec"  src="imagenes/3secCD.png"></img>
+				
+				<img class="habilidad_W" id="W_CD_1sec"  src="imagenes/1secCD.png"></img>
+				<img class="habilidad_W" id="W_CD_2sec"  src="imagenes/2secCD.png"></img>
+				<img class="habilidad_W" id="W_CD_3sec"  src="imagenes/3secCD.png"></img>
+				
+				<img class="habilidad_E" id="E_CD_1sec"  src="imagenes/1secCD.png"></img>
+				<img class="habilidad_E" id="E_CD_2sec"  src="imagenes/2secCD.png"></img>
+				<img class="habilidad_E" id="E_CD_3sec"  src="imagenes/3secCD.png"></img>
+				
+				<img class="habilidad_R" id="R_CD_1sec"  src="imagenes/1secCD.png"></img>
+				<img class="habilidad_R" id="R_CD_2sec"  src="imagenes/2secCD.png"></img>
+				<img class="habilidad_R" id="R_CD_3sec"  src="imagenes/3secCD.png"></img>
+				<!-- Detalles -->
+				<img id="barraNivelHabilidades"  src="imagenes/BarraNivelHabilidades.png"></img>
+			</div>
+			<div id="estado">
+				<!-- Sona -->
+				<div id="vidaSona"></div>
+				<img id="LifeBarSona" src="imagenes/LifeBarSona.png"></img>
+				<!-- Hecarim -->
+				<div id="vidaHecarim"></div>
+				<img id="LifeBarHecarim" src="imagenes/LifeBarHecarim.png"></img>
+				<!-- Miss Fortune -->
+				<div id="vidaMissFortune"></div>
+				<img id="LifeBarMissFortune" src="imagenes/LifeBarMissFortune.png"></img>
+			</div>
+		</div>
+	</body>
+</html>

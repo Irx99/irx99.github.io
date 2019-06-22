@@ -1,0 +1,168 @@
+body{
+	background-color:#4b5c76;
+}
+
+hr{
+	color:#374355;
+}
+
+#mapa {
+	border-collapse:collapse;
+}
+  
+#cajaTexto{
+	position:relative;
+	position:fixed;
+	top:5px;
+	right:8px;
+	left:984px;
+	bottom:53px;
+}
+
+#botones {
+	height:5%;
+	position:relative;
+	position:fixed;
+}
+
+td {
+	height:25px;
+	width:24px;
+	text-align:center;
+	border:1px solid black;
+	padding:0px;
+	color:red;
+	font-weight:bold;
+}
+
+#scrollTexto{
+	position:relative;
+	position:fixed;
+	top:150px;
+	left:984px;
+	bottom:53px;
+	height:290px;
+	width:100%;
+	overflow-y:scroll;
+}
+
+#hr2{
+	width:100%;
+	position:relative;
+	position:fixed;
+	top:440px;
+	left:984px;
+	bottom:53px;
+	height:400px;
+}
+
+#tutorial{
+	position:relative;
+	text-align:center;
+	top:300px;
+	bottom:53px;
+}
+
+.terreno {
+	font-size:14pt;
+	background-image:url('imagenes/terreno.png');
+}
+
+.rocaDestruida {
+	font-size:14pt;
+	background-image:url('imagenes/rocaDestruida.png');
+}
+
+.terreno2 {
+	font-size:14pt;
+	background-image:url('imagenes/terreno2.png');
+}
+
+.escaleraFrente{
+	font-size:14pt;
+	background-image:url('imagenes/escaleraFrente.png');
+}	  	  
+
+.escaleraLateral{
+	font-size:14pt;
+	background-image:url('imagenes/escaleraLateral.png');
+}	 
+
+.roca{
+	background-image:url('imagenes/roca.png');
+}	  
+
+.lastP {
+	background-image:url('imagenes/checkPoint.png');
+	font-size:14pt;
+}
+
+.uselessP{
+	background-image:url('imagenes/terreno.png');
+	font-size:14pt;
+}
+
+.pulsador{
+	background-image:url('imagenes/pulsador.png');
+	font-size:14pt;
+}
+
+.puertaHC{
+	background-image:url('imagenes/puertaHC.png');
+	font-size:14pt;
+}
+
+.puertaHO{
+	background-image:url('imagenes/puertaHO.png');
+	font-size:14pt;
+}
+
+.puertaVC{
+	background-image:url('imagenes/puertaVC.png');
+	font-size:14pt;
+}
+
+.puertaVO{
+	background-image:url('imagenes/puertaVO.png');
+	font-size:14pt;
+}
+
+.espada1{
+	background-image:url('imagenes/espada1.png');
+}
+
+.sinEspada{
+	background-image:url('imagenes/sinEspada.png');
+}
+
+.niebla{
+	position:absolute;
+}
+
+.pared  {
+	background-image:url('imagenes/pared.png');
+}
+
+.lapida {
+	background-image:url('imagenes/lapida.png');
+}
+
+.portal{
+	background-image:url('imagenes/portal.png');
+}
+
+.fuenteTL{
+		background-image:url('imagenes/fuenteTL.png');
+}
+
+.fuenteTR{
+		background-image:url('imagenes/fuenteTR.png');
+}
+
+.fuenteBL{
+		background-image:url('imagenes/fuenteBL.png');
+}
+
+.fuenteBR{
+		background-image:url('imagenes/fuenteBR.png');
+}

@@ -1,0 +1,695 @@
+<html>
+	<head>
+		<!-- Estilo -->
+		<link rel="Stylesheet" href="Estilo.css" type="text/css">
+  
+		<!-- Creacion del mapa -->
+		<script type="text/javascript" src="casillas.js"></script>
+  
+		<!-- pasarTurno -->
+		<script type="text/javascript" src="pasarTurno.js"></script>
+  
+		<!-- Clases -->
+		<script type="text/javascript" src="clases.js"></script>
+  
+		<!-- Murcielagos -->
+		<script type="text/javascript" src="murcielagos.js"></script>
+  
+		<!-- Zombies -->
+		<script type="text/javascript" src="zombies.js"></script>
+  
+		<!-- Final Boss -->
+		<script type="text/javascript" src="mago.js"></script>
+  
+		<!-- Ataque del Mago -->
+		<script type="text/javascript" src="bolasDeFuego.js"></script>
+  
+		<!-- Codigo del juego -->
+		<script type="text/javascript">
+		
+		//Posicion del prota
+		var columna = 4;
+		var fila = 4;
+		document.getElementById(fila+"-"+columna).innerHTML = "<img src=\"imagenes/personaje.png\"/>";
+   
+		//Estado inicial del prota
+		var vida = 10;
+		var turno = 0;
+		var damage = 1; 
+
+		//Check de mensajes
+		var ms = new Array();
+		for(i=0;i<21;i++){
+			ms[i] = false
+		}
+   
+		//Declaracion de los murcielagos
+		var murcielago = new Array();
+		var numIdMur = 0;
+	  
+		//Declaracion de los Zombies
+		var zombie = new Array();
+		var numIdZom = 0;
+		var checkZombies = false;
+		
+		//Contador de movimientos del mago
+		var contMago = 0;
+		
+		//Para que el mago solo aparezca una vez
+		var boss = false;
+		
+		//Ataques de bola de fuego
+		var bola = new Array();
+		var numIdBol = 0;
+   
+	    //Tras cargar la pagina
+	    function carga(){
+		
+		//Mensaje inicial
+		document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    &#191;Donde estoy?<br>    &#191;Como he llegado aqui?<br>    ...Ahh, mi cabeza.</pre></font>";
+		
+	    document.getElementById("turno").innerHTML = turno;//Establece el turno
+	   
+	    //(re)Activa el boton de reseteo
+	    document.getElementById("botonReset").disabled = false;
+
+			//Murcielagos
+			crearMurcielago("1", "6", "5", "10", "2", "7");
+			crearMurcielago("1", "6", "5", "10", "4", "9");
+			
+			crearMurcielago("6", "16", "9", "20", "7", "17");
+			crearMurcielago("6", "16", "9", "20", "8", "18");
+			
+			crearMurcielago("1", "22", "7", "28", "1", "22");
+			crearMurcielago("1", "22", "7", "28", "2", "23");
+			crearMurcielago("1", "22", "7", "28", "3", "24");
+			crearMurcielago("1", "22", "7", "28", "4", "25");
+			crearMurcielago("1", "22", "7", "28", "5", "26");
+			crearMurcielago("1", "22", "7", "28", "6", "27");
+			crearMurcielago("1", "22", "7", "28", "7", "28");
+			crearMurcielago("1", "22", "7", "28", "6", "22");
+			crearMurcielago("1", "22", "7", "28", "5", "23");
+			crearMurcielago("1", "22", "7", "28", "4", "24");
+			
+			//Cajas	
+			document.getElementById("3-20").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("3-20").caja = true;
+			document.getElementById("9-6").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("9-6").caja = true;
+			document.getElementById("12-6").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("12-6").caja = true;
+			document.getElementById("13-7").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("13-7").caja = true;
+			document.getElementById("8-9").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("8-9").caja = true;
+			document.getElementById("8-10").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("8-10").caja = true;
+			document.getElementById("10-10").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("10-10").caja = true;
+			document.getElementById("8-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("8-11").caja = true;
+			document.getElementById("10-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("10-11").caja = true;
+			document.getElementById("13-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("13-11").caja = true;
+			document.getElementById("16-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+		    document.getElementById("16-11").caja = true;
+	    }
+   
+	   //Movimientos del personaje, uno hacia cada posicion
+		function teclaPulsada(evento){
+			switch(evento){
+				case 32:
+					pasarTurno();
+					break;
+				case 37:
+					mover(-1,0);
+					break;
+				case 38:
+					mover(0,-1);
+					break;
+				case 39:
+					mover(1,0);
+					break;
+				case 40:
+					mover(0,1);
+					break;
+			}
+			//Adapata el scroll al ultimo mensaje
+			document.getElementById("scrollTexto").scrollTop = document.getElementById("scrollTexto").scrollHeight;
+		}
+	
+		//Mueve al personaje
+		function mover(posicionX, posicionY){		
+			
+			//Si el personaje no puede avanzar
+			if(
+			classSolido(fila + posicionY, columna + posicionX) || //Si va hacia una pared
+			classRoca(fila + posicionY, columna + posicionX) && damage < 2 || //Si va hacia una roca sin tener la espada para romperla (daño menor a 2)
+			document.getElementById((fila+posicionY)+"-"+(columna+posicionX)).caja == true && document.getElementById((fila+(posicionY*2))+"-"+(columna+(posicionX*2))).caja == true || //Si empuja una caja hacia otra
+			document.getElementById((fila+posicionY)+"-"+(columna+posicionX)).caja == true && classSolido((fila+(posicionY*2)), (columna+(posicionX*2))) || //Si empuja una caja hacia una pared
+			document.getElementById((fila+posicionY)+"-"+(columna+posicionX)).caja == true && classRoca((fila+(posicionY*2)), (columna+(posicionX*2))) //Si empuja una caja hacia una roca(Destruida o no)
+			)
+			{
+			}else{
+				//Posicion en la que estaba
+				var casilla =  document.getElementById(fila+"-"+columna);
+				casilla.innerHTML="";
+			
+				//Nueva posicion
+				columna = columna + posicionX;
+				fila = fila + posicionY;
+				
+				//Mensajes
+				if(fila == 3 && columna == 4 && ms[0] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Que caida mas tonta.<br>    Bueno, la espada de la leyenda<br> deber&#237;a estar cerca.</pre></font>";
+					ms[0] = true;
+				}
+				if(fila == 1 && columna == 5 && ms[1] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Murcielagos, sera mejor que los<br> evite.</pre></font>";
+					ms[1] = true;
+				}
+				if(fila == 4 && columna == 14 && ms[2] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    &#161;OH!&#161;Ahi esta! Espero que sea<br> tan poderosa como dicen.</pre></font>";
+					ms[2] = true;
+				}
+				//3 -> Al coger la espada
+				//Si has cogido la espada
+				if(fila == 1 && columna ==18 && ms[4] == false && damage == 2){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    El mecanismo de la puerta parece<br> sencillo.<br>    Necesito romper la roca, espero<br> que esta espada sea capaz.</pre></font>";
+					ms[4] = true;
+				}
+				//5 -> Al abrir la puerta
+				if(fila == 9 && columna == 23 && ms[6] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    &#191;Una fuente curativa aqui? Que<br> extra&#241;o ...<br> Supongo que puedo curarme bebiendo<br> un poco de ella.</pre></font>";
+					ms[6] = true;
+				}
+				if(fila == 8 && columna == 28 && ms[7] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Menuda cantidad de murcielagos,<br> debo tener cuidado al pasar por<br> aqui.<br> Si lo veo demasiado dificil deberia<br> volver a la fuente</pre></font>";
+					ms[7] = true;
+				}
+				if(fila == 2 && columna == 29 && ms[8] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Esto parece un laberinto magico,<br> si voy hacia donde no es volvere<br> al principio.<br> Memorizando el camino no deberia<br> costarme demasiado.</pre></font>";
+					ms[8] = true;
+				}
+				if(fila == 10 && columna == 37 && ms[9] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    &#161;&#191;Zombies tambien?!, y no son<br> pocos, tengo que correr antes de que me<br> alcanzen, no puedo enfrentarme a todos<br> ellos.</pre></font>";
+					ms[9] = true;
+				}
+				if(fila == 7 && columna == 14 && ms[10] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Esta vez no parece tan sencillo,<br> debo pensarlo bien antes de mover<br> nada.<br> (NOTA: Puedes resetear las cajas<br> pulsando en el boton \"Reiniciar\"<br> que esta a la derecha de la vida)</pre></font>";
+					ms[10] = true;
+				}
+				//11 -> Al abrir la 2ª puerta
+				if(fila == 18 && columna == 15 && ms[12] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Parece que son portales, un<br> laberinto de portales para ser mas<br> exactos, alguien no quiere que<br> salga de aqui.</pre></font>";
+					ms[12] = true;
+				}
+				if(fila == 29 && columna == 22 && ms[13] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    &#191;Otra fuente?&#191;Como puede haber<br> tanto agua curativa en un lugar asi?<br> Sera mejor aprovecharlo.</pre></font>";
+					ms[13] = true;
+				}
+				//FINAL BOSS. CHAN CHAN CHAN
+				if(fila == 26 && columna == 14 && ms[14] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Guardian: <font color=\"#1a003a\"><pre>    No se como has llegado hasta<br> aqui, pero tu destino esta sellado</pre></font>";
+					ms[14] = true;
+				}
+				if(fila == 26 && columna == 13 && ms[15] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Debe de ser el guardian,<br> siempre hay un guardian... <br> Al menos se que estoy cerca de la<br> salida.</pre></font>";
+					ms[15] = true;
+				}
+				if(fila == 26 && columna == 12 && ms[16] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Guardian: <font color=\"#1a003a\"><pre>    &#161;&#161;&#161;MUERE!!!</pre></font>";
+					ms[16] = true;
+				}
+				//17 -> Al matar al boss
+				if(fila == 16 && columna == 1 && ms[18] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Debo admitir que ha sido algo<br> mas duro de lo que esperaba,<br> ya estoy mayor para estas cosas.</pre></font>";
+					ms[18] = true;
+				}
+				if(fila == 8 && columna == 1 && ms[19] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Me pregunto como hay tantas<br> fuentes de agua curativa aqui.</pre></font>";
+					ms[19] = true;
+				}
+				if(fila == 7 && columna == 1 && ms[20] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Bueno, da igual, debo llevarle<br> esta espada a mi hijo, creo que<br> es la hora de retirarme.<br> El debe proseguir con mi legado.</pre></font>";
+					ms[20] = true;
+				}
+				
+				//Coge la espada
+				if (fila == 2 && columna == 14){//Posicion de la primera espada
+					document.getElementById("2-14").className = "sinEspada";
+					damage = 2;//Aumenta el daño
+					if(ms[3] == false){
+						document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Por fin es mia. Ahora toca<br> salir de aqui.</pre></font>";
+						ms[3] = true;
+					}
+							
+				//Resetea los valores para no avanzar
+				columna = columna - posicionX;
+				fila = fila - posicionY;
+				}
+				
+				//Si te encuentras con una roca
+				if(classRoca(fila, columna)){
+					document.getElementById(fila+"-"+columna).className="rocaDestruida";
+					
+					//Resetea los valores para no avanzar
+					columna = columna - posicionX;
+					fila = fila - posicionY;
+				}
+				
+				//Si te encuentras con una caja
+				if(document.getElementById(fila+"-"+columna).caja == true){
+					document.getElementById(fila+"-"+columna).innerHTML = "";
+					document.getElementById(fila+"-"+columna).caja = false;
+					document.getElementById((fila+posicionY)+"-"+(columna+posicionX)).innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+					document.getElementById((fila+posicionY)+"-"+(columna+posicionX)).caja = true;
+					
+					comprobarPulsadores();
+				}
+				
+				//Si te encuentras con un murcielago
+				if(document.getElementById(fila+"-"+columna).enemyMurcielago == true){
+					document.getElementById("caja").innerHTML += "<pre> Golpeas a un murcielago.</pre>";
+					for(i=0;i<murcielago.length;i++){
+						if(murcielago[i].posX == fila && murcielago[i].posY == columna){
+							murcielago[i].vida = murcielago[i].vida - damage;
+							if(murcielago[i].vida <= 0){
+								destruyeMurcielago(murcielago[i]);
+								document.getElementById("caja").innerHTML += "<pre><b> Has matado a un murcielago.</b></pre>";
+							}
+						}
+					}
+					
+					//Resetea los valores para no avanzar
+					columna = columna - posicionX;
+					fila = fila - posicionY;
+				}
+				
+				//Cuando te encuentras con una pared del laberinto
+				paredInvisible();			
+				
+				//Cuando entras en la zona del cementerio
+				if(fila == 10 && columna == 37 && checkZombies == false){
+					checkZombies = true;
+					//Se crean los zombies
+					crearZombie("18", "29");
+					crearZombie("12", "31");
+					crearZombie("27", "29");
+					crearZombie("29", "33");
+					crearZombie("31", "35");
+				}
+
+				
+				//Si te encuentras con el cadaver de un zombie
+				if(document.getElementById(fila+"-"+columna).enemyZombie == "dead"){
+					for(i=0;i<zombie.length;i++){
+						if(zombie[i].posX == fila && zombie[i].posY == columna){
+							destruyeZombie(zombie[i]);
+						}
+					}
+					document.getElementById("caja").innerHTML += "<pre><b> Destruyes el cuerpo del zombie.</b></pre>";
+				}
+				
+				//Si te encuentras con un zombie
+				if(document.getElementById(fila+"-"+columna).enemyZombie == true){
+					document.getElementById("caja").innerHTML += "<pre> Golpeas a un zombie</<pre>";
+					for(i=0;i<zombie.length;i++){
+						if(zombie[i].posX == fila && zombie[i].posY == columna){
+							zombie[i].vida = zombie[i].vida - damage;
+							if(zombie[i].vida <= 0){
+								muereZombie(zombie[i]);
+								document.getElementById("caja").innerHTML += "<pre><b> Has matado a un zombie</b><pre>";
+							}
+						}
+					}
+
+					//Resetea los valores para no avanzar
+					columna = columna - posicionX;
+					fila = fila - posicionY;
+				}
+				
+				//Cuando te encuentras con un portal
+				portales();
+				
+				//Boton de reseteo
+				if(fila == 7 && columna == 14){
+					document.getElementById("botonReset").style.visibility = "visible";
+				}
+				
+				if(fila == 26 && columna == 12 && boss == false){
+					//Para no poder salir
+					document.getElementById("26-13").className = "solido pared";
+					document.getElementById("19-1").className = "solido pared";
+					
+					//Declaracion del mago
+					boss = true;
+					mago = new Mago();
+					document.getElementById(mago.posX+"-"+mago.posY).innerHTML = "<img src=\"imagenes/mago.png\"/>";
+				}
+				
+				//Comprueba que exista el mago (sino da error)
+				if(typeof mago != "undefined"){
+					//Si te encuentras con el Mago
+					if(fila == mago.posX && columna == mago.posY && mago.vida >= 0){
+						document.getElementById("caja").innerHTML += "<pre> Golpeas al mago</pre>";
+						quitarVidaMago();
+					
+						//Resetea los valores para no avanzar
+						columna = columna - posicionX;
+						fila = fila - posicionY;
+					
+						if(mago.vida <= 0){
+							destruirMago();
+						}
+					}
+				}
+				
+				//Si te encuentras con una bola de fuego
+				for(cont=0;cont<bola.length;cont++){
+					if(bola[cont].posX == fila && bola[cont].posY == columna && document.getElementById(bola[cont].posX+"-"+bola[cont].posY).enemyBolaDeFuego == true){
+						quitarVida(1);
+						document.getElementById(bola[cont].posX+"-"+bola[cont].posY).enemyBolaDeFuego == false;
+						document.getElementById("caja").innerHTML += "<font color=\"a40000\"><pre> Eres da&#241;ado por una bola de fuego</pre></font>";
+					}
+				}
+				
+				if(fila == 0 && columna == 1 || fila == 0 && columna == 2){
+					victoria();
+				}
+				
+				//Avanza (o no)
+				var casilla =  document.getElementById(fila+"-"+columna);
+				casilla.innerHTML="<img src=\"imagenes/personaje.png\"></img>";
+				casilla.style.color="white";
+				
+				//Pasa un turno
+				pasarTurno();
+			}
+		}	
+			
+		//Define el funcionamiento de los pulsadores		
+		function comprobarPulsadores(){
+		
+			if(document.getElementById("4-20").caja == true){
+				document.getElementById("5-19").className = "puertaHO";//puerta horizontal open
+				if(ms[5] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Ha sido facil.</pre></font>";
+					ms[5] = true;
+				}
+				
+			} 
+				
+			if(
+			document.getElementById("17-5").caja == true &&
+			document.getElementById("17-6").caja == true &&
+			document.getElementById("17-7").caja == true &&
+			document.getElementById("17-8").caja == true &&
+			document.getElementById("17-9").caja == true &&
+			document.getElementById("18-5").caja == true &&
+			document.getElementById("18-6").caja == true &&
+			document.getElementById("18-7").caja == true &&
+			document.getElementById("18-8").caja == true &&
+			document.getElementById("18-9").caja == true
+			){
+				document.getElementById("18-13").className = "puertaVO";
+				//Deshabilita el boton   
+				document.getElementById("botonReset").disabled = true;
+				if(ms[11] == false){
+					document.getElementById("caja").innerHTML += "&nbsp; Personaje: <font color=\"#48ff00\"><pre>    Resuelto al fin, ya no deberia<br> quedar mucho para encontrar una<br> salida</pre></font>";
+					ms[11] = true;
+				}
+			}
+		}
+   
+	    //Pared invisible
+	    function paredInvisible(){
+			if(fila == 3 && columna == 30 ||
+			   fila == 2 && columna == 31 ||
+			   fila == 1 && columna == 33 ||
+			   fila == 2 && columna == 33 ||
+			   fila == 3 && columna == 33 ||
+			   fila == 4 && columna == 33 ||
+			   fila == 4 && columna == 32 ||
+			   fila == 5 && columna == 32 ||
+			   fila == 5 && columna == 31 ||
+			   fila == 4 && columna == 34 ||
+			   fila == 5 && columna == 34 ||
+			   fila == 6 && columna == 34 ||
+			   fila == 7 && columna == 34 ||
+			   fila == 7 && columna == 31 ||
+			   fila == 7 && columna == 32 ||
+			   fila == 7 && columna == 33 ||
+			   fila == 8 && columna == 32 ||
+			   fila == 9 && columna == 30 ||
+			   fila == 9 && columna == 34 ||
+			   fila == 2 && columna == 35 ||
+			   fila == 2 && columna == 36 ||
+			   fila == 2 && columna == 37 ||
+			   fila == 4 && columna == 36 ||
+			   fila == 5 && columna == 36 ||
+			   fila == 6 && columna == 36 ||
+			   fila == 7 && columna == 36 ||
+			   fila == 8 && columna == 36 ||
+			   fila == 9 && columna == 36
+			   ){
+				document.getElementById("caja").innerHTML += "<pre> Te pierdes entre la niebla</pre>";
+				fila = 2;
+				columna = 29;
+			}
+		}
+   
+		//Define el funcionamiento de los portales
+		function portales(){
+			if(fila == 14 && columna == 14){
+				fila = 16;
+				columna = 15;
+			}
+			else if(fila == 14 && columna == 18){
+				fila = 24;
+				columna = 14;
+			}
+			else if(fila == 16 && columna == 15){
+				fila = 14;
+				columna = 14;
+			}	
+			else if(fila == 16 && columna == 18){
+				fila = 20;
+				columna = 15;
+			}	
+			else if(fila == 20 && columna == 15){
+				fila = 16;
+				columna = 18;
+			}	
+			else if(fila == 20 && columna == 18){
+				fila = 22;
+				columna = 14;
+			}
+			else if(fila == 22 && columna == 14){
+				fila = 20;
+				columna = 18;
+			}
+			else if(fila == 22 && columna == 18){
+				fila = 24;
+				columna = 20;
+			}
+			else if(fila == 24 && columna == 14){
+				fila = 14;
+				columna = 18;
+			}
+			else if(fila == 24 && columna == 16){
+				fila = 24;
+				columna = 22;
+			}
+			else if(fila == 24 && columna == 18){
+				fila = 28;
+				columna = 22;
+			}
+			else if(fila == 24 && columna == 20){
+				fila = 22;
+				columna = 18;
+			}
+			else if(fila == 24 && columna == 22){
+				fila = 24;
+				columna = 16;
+			}
+			else if(fila == 26 && columna == 15){
+				fila = 28;
+				columna = 19;
+			}
+			else if(fila == 26 && columna == 17){
+				fila = 32;
+				columna = 16;
+			}
+			else if(fila == 26 && columna == 20){
+				fila = 28;
+				columna = 16;
+			}
+			else if(fila == 26 && columna == 22){
+				fila = 30
+				columna = 16;
+			}
+			else if(fila == 28 && columna == 14){
+				fila = 30
+				columna = 14;
+			}
+			else if(fila == 28 && columna == 16){
+				fila = 26
+				columna = 20;
+			}
+			else if(fila == 28 && columna == 19){
+				fila = 26
+				columna = 15;
+			}
+			else if(fila == 28 && columna == 22){
+				fila = 24
+				columna = 18;
+			}
+			else if(fila == 30 && columna == 14){
+				fila = 28
+				columna = 14;
+			}
+			else if(fila == 30 && columna == 16){
+				fila = 26
+				columna = 22;
+			}
+			else if(fila == 32 && columna == 16){
+				fila = 26
+				columna = 17;
+			}
+		}
+	
+		//Reiniciar cajas
+		function resetear(){
+			//Limpieza
+			for(i=7;i<19;i++){
+				for(j=5;j<14;j++){
+					document.getElementById(i+"-"+j).innerHTML = "";
+					document.getElementById(i+"-"+j).caja = false;
+
+				}
+			}
+			
+			if(document.getElementById("7-14").caja == true){
+				document.getElementById("7-14").innerHTML = "";
+				document.getElementById("7-14").caja = false;
+			}
+			
+			document.getElementById(fila+"-"+columna).innerHTML = "";
+			
+			//Recolocacion
+			document.getElementById("9-6").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("9-6").caja = true;
+			document.getElementById("12-6").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("12-6").caja = true;
+			document.getElementById("13-7").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("13-7").caja = true;
+			document.getElementById("8-9").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("8-9").caja = true;
+			document.getElementById("8-10").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("8-10").caja = true;
+			document.getElementById("10-10").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("10-10").caja = true;
+			document.getElementById("8-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("8-11").caja = true;
+			document.getElementById("10-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("10-11").caja = true;
+			document.getElementById("13-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("13-11").caja = true;
+			document.getElementById("16-11").innerHTML = "<img src=\"imagenes/cajaMadera.png\"></img>";
+			document.getElementById("16-11").caja = true;
+			
+			
+			fila = 7;
+			columna = 14;
+			document.getElementById(fila+"-"+columna).innerHTML = "<img src=\"imagenes/personaje.png\"></img>";
+		}
+   
+		//Derrota
+		function derrota(){
+			alert("Has muerto entre terribles sufrimientos");
+			document.location.reload();
+		}
+   
+		//Victoria
+		function victoria(){
+			alert("Enhorabuena, has completado el juego!");
+			
+			document.location.reload();
+		}
+
+	   //Chetos varios
+	   /*
+	   function colocarCajas(){
+	   var fil = 16;
+	   var col = 4;
+	   
+	   for (i=0;i<2;i++){
+	   fil++;
+		   for (j=0;j<5;j++){
+				  col++;
+				  document.getElementById(fil+"-"+col).className = "cajaMadera";
+				  }
+			col = 4;
+			}
+	   }
+	   */
+   
+		function quitarVida(num){
+			vida = vida - num;
+			if(vida <= 0){
+				derrota();
+			}
+		}
+   
+	
+		</script>
+	</head>
+ 
+	<body onload="carga()" onkeydown="teclaPulsada(event.keyCode)">
+  
+		<div id="cajaTexto">
+			<div id="titulo" style="text-align: center;">
+				<h1>&nbsp;Sucesos</h1>
+				<hr>
+			</div>
+			<div id="botones">
+				&nbsp;
+				<img id="corazon1" src="imagenes/corazonLleno.png"/>
+				<img id="corazon2" src="imagenes/corazonLleno.png"/>
+				<img id="corazon3" src="imagenes/corazonLleno.png"/>
+				<img id="corazon4" src="imagenes/corazonLleno.png"/>
+				<img id="corazon5" src="imagenes/corazonLleno.png"/>
+				<img id="corazon6" src="imagenes/corazonLleno.png"/>
+				<img id="corazon7" src="imagenes/corazonLleno.png"/>
+				<img id="corazon8" src="imagenes/corazonLleno.png"/>
+				<img id="corazon9" src="imagenes/corazonLleno.png"/>
+				<img id="corazon10" src="imagenes/corazonLleno.png"/>
+				&nbsp; Turno: <span id="turno"></span>
+				<br>
+				&nbsp;<input id="botonReset" type="button" value="Reiniciar" onclick="resetear()" style="visibility:hidden;"/>
+				<!--&nbsp;<input type="button" value="Puntuaciones" target="_blank" onClick="window.open('puntuacion.php', this.target, 'width=300,height=400')"/>-->
+			</div>
+			<div>
+				<br>
+				<br>
+				<hr>
+			</div>
+			<div id="scrollTexto">
+				<p id="caja"></p>
+			</div>
+			<div id="hr2">
+				<hr>
+			</div>
+			<div id="tutorial">
+				<h2>&nbsp;Instrucciones</h2>
+				<h3>Pasar Turno &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mover</h3>
+				<img src="imagenes/barraEspaciadora.png"></img>
+				<img src="imagenes/flechas.png"></img>
+			</div>
+		</div>
+
+	</body>
+ 
+</html>

@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+	
+		<!-- Font Awesome -->
+		<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">-->
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="css/mdb.min.css" rel="stylesheet">
+		
+		<style>
+		.gameImage{
+			height:216;
+			width:385;
+			object-fit: cover;
+		}
+		</style>
+		
+		<script>
+		function onLoad() {
+			onResize();
+			document.getElementsByTagName("BODY")[0].style.display = "initial";
+		}
+		
+		function onResize() {
+			
+		  if( window.innerWidth >= 992 )
+		  {
+			document.getElementById("scroll").style = "-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); background-color: #F5F5F5; border-radius: 4px; height:85vh; overflow-y: auto;";
+		  }
+		  else
+		  {
+			document.getElementById("scroll").style = "-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); background-color: #F5F5F5; border-radius: 4px;";
+		  }
+		  
+		  if( window.innerWidth >= 1200 )
+		  {
+			document.getElementById("mainText").style = "font-size:18px;";
+		  }
+		  else
+		  {
+			document.getElementById("mainText").style = "font-size:16px;";
+		  }
+		}
+		</script>
+
+		<title>AdrianGH</title>
+		<link rel="icon" href="./_Imagenes/titleIcon.png" />
+	</head>
+	<body onresize="onResize()" onload="onLoad()" style="display:none;">
+	
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+			<a class="navbar-brand pl-2"><b>AdrianGH</b></a>
+		</nav>
+	
+		<div class="container-fluid">
+			<div class="row p-md-4 p-sm-4 p-4 px-xl-5">
+				<div class="col-lg-6 pb-2 pr-lg-4">
+				
+					<div class="d-flex row">
+						<div class="col-sm-auto d-flex justify-content-center m-0 pt-2 p-0" >
+							<img class="rounded-circle border border-light" style="height:176px; width:176px; object-fit: cover; border-width:5px !important;" src="./_Imagenes/Foto.png" alt="Foto personal"> 
+						</div>
+						<div class="col-sm-auto m-0 mt-2 pl-1;"">
+							<b>My name:</b> </br>
+							Adrián </br>
+							<b>Languages:</b> </br>
+							Spanish (Native) and English (B2) </br>
+							<b>My studies:</b> </br>
+							- Multiplatform development (EQF 5) </br>
+							- Software Engineer (EQF 6) </br> 
+							- Video Game Development (EQF 7)
+						</div>
+					</div>
+					
+					<div class="row my-4">
+						<div class="d-flex align-items-center col-sm-auto col-12 pb-sm-0 pb-2 small">
+							<a href="https://twitter.com/irx99">
+								<div>
+									<img style="height:30px; width:30px; object-fit: cover;" src="./_Imagenes/TwitterLogo.png" alt="Twitter logo"> &nbsp;@irx99
+								</div>
+							</a>
+						</div>
+						<div class="d-flex align-items-center col-sm-auto col-12 pb-sm-0 pb-2 small">
+							<a href="https://www.linkedin.com/in/adri%C3%A1n-gonz%C3%A1lez-hornillos-99a133175/">
+								<div>
+									<img style="height:30px; width:30px; object-fit: cover;" src="./_Imagenes/LinkedInLogo.png" alt="LinkedIn logo"> &nbsp;LinkedIn 
+								</div>
+							</a>
+						</div>
+						<div class="d-flex align-items-center col-sm-auto col-12 small">
+							<div>
+								<img style="height:30px; width:30px; object-fit: cover;" src="./_Imagenes/GmailLogo.png" alt="Gmail logo"> &nbsp;adriang.gtb@gmail.com 
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-12 col-xl-11 cols-xl-offset-1 pb-3">
+							<div id="mainText" class="text-justify" style="font-size:18px;">
+							
+							For over 7 years I know I want to live from making videogames. My studies make clear I am a programmer and I truly enjoy it. My biggest aspiration is to design my own videogames in the future. Now I am looking for a place to start in this industry surrounded by professionals with the same passion as me. 
+							</br></br>
+							I have been playing videogames for as long as I can remember. I am mainly a PC player and lately I am entering to the Nintendo realm. My favorites genres are tycoon and rhyming games and I am always looking for hidden gems in the Indie scene.
+							</br></br>
+							Outside videogames I like to watch anime and I follow several podcast and content creators about comedy, technology and the internet. I try to maintain myself in good shape taking a walk everyday I can. Also, I am the introvert type, so I am not the life of the party, but of course I meet with friends once in a while.
+							
+							</div>							
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="col-lg-6 card" id="scroll" style="-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); background-color: #F5F5F5; border-radius: 10px; height:95vh; overflow-y: auto;">
+				
+					<div class="card-body p-0 m-0">
+					
+						<div class="row pt-3">
+							<div class="col-12 d-flex justify-content-center">
+								<h2>My games</h2>
+							</div>
+						</div>
+					
+					
+						<div class="row pt-2">
+						
+							<!-- [10] ----------------------------------------------------------------------------------------------------------------------------- -->
+						
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+						
+							<!-- Texto Izquierda / Arriba -->
+							<div class="col-sm-6 col-12 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">LitterLand</p>
+										<p class="black-text">An adventure that shows the importance of recycling. 
+										</br></br>
+										Now in development</p>
+									</div>
+								</div>
+							</div>
+						
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://twitter.com/BunnyGalactic">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/LitterLand.png" alt="LitterLand"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">LitterLand</p>
+										<p class="black-text">An adventure that shows the importance of recycling. 
+										</br></br>
+										Now in development</p>
+									</div>
+								</div>
+							</div>
+							
+							<!-- [9] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Izquierda / Arriba -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Crab Dream</p>
+										<p class="black-text">A crab with literary ambitions.
+										</br></br>
+										A Gametopia Jam with 35 teams participation, the topic was "Literature"</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://pachachostudios.itch.io/a-crab-dream">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/CrabDream.png" alt="Crab Dream"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Crab Dream</p>
+										<p class="black-text">A crab with literary ambitions.
+										</br></br>
+										A Gametopia Jam with 35 teams participation, the topic was "Literature"</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- [8] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Izquierda / Arriba -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Keep Breathing</p>
+										<p class="black-text">Experience one day in the life of a kid whose life isn't easy.
+										</br>
+										My second JAM, the topic was "breath". We win \o/</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- Juego  -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://pachachostudios.itch.io/keep-breathing">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/KeepBreathing.png" alt="Keep Breathing"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Keep Breathing</p>
+										<p class="black-text">Experience one day in the life of a kid whose life isn't easy.
+										</br>
+										My second JAM, the topic was "breath". We win \o/</p>
+									</div>	
+								</div>
+							</div>
+														
+							<!-- [7] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Izquierda / Arriba -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Hooks Battle Royale</p>
+										<p class="black-text">An experiment with online an unreal. More a proof of concept than a game</p>
+									</div>	
+								</div>
+							</div>
+
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://irx99.itch.io/hooksbattleroyale">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/HooksBattleRoyale.png" alt="Hooks Battle Royale"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Hooks Battle Royale</p>
+										<p class="black-text">An experiment with online an unreal. More a proof concept than a game</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- [6] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Izquierda / Arriba -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px">Arkanoid Effect</p>
+										<p class="black-text">My take on this classics Unity tutorial. A parody of tetris effect</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://irx99.itch.io/arkanoid-effect">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/ArkanoidEffect.png" alt="Arkanoid Effect"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px">Arkanoid Effect</p>
+										<p class="black-text">My take on this classics Unity tutorial. A parody of tetris effect</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- [5] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Izquierda / Arriba -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">FPS Test</p>
+										<p class="black-text">A simple shooter to showcase several mechanics learned in class</p>
+									</div>	
+								</div>
+							</div>
+
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://irx99.itch.io/fps-test">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/FPSTest.png" alt="FPS Test"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">FPS Test</p>
+										<p class="black-text">A simple shooter to showcase several mechanics learned in class</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- [4] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Arriba / Izquierda -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Geriatric Hard Road</p>
+										<p class="black-text">My first JAM ever, the topic was "disability". We were 2º out of 6 :D</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://irx99.itch.io/geriatric-hard-road">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/GeriatricHardRoad.png" alt="Geriatric Hard Road"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">Geriatric Hard Road</p>
+										<p class="black-text">My first JAM ever, the topic was "disability". We were 2º out of 6 :D</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- [3] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+
+							<!-- Texto Arriba / Izquierda -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">InternShips</p>
+										<p class="black-text">A cooperative space shooter. My final degree project, made with a friend. We got a 10</p>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="https://agonesc.itch.io/internships">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/Internships.png" alt="InternShips"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:24px;">InternShips</p>
+										<p class="black-text">A cooperative space shooter. My final degree project, made with a friend. We got a 10</p>
+									</div>
+								</div>
+							</div>
+							
+							<!-- [2] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Arriba / Izquierda -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:30px;">Veigar Final Battle</p>
+										<p class="black-text">My second game, same ideas but trying to improve the mistakes I made in my first game</p>
+									</div>		
+								</div>
+							</div>
+							
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="./_Juegos/JuegoArcade/juego.html">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/VeigarFinalBoss.png" alt="Veigar Final Battle"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">
+										<p class="black-text" style="font-size:30px;">Veigar Final Battle</p>
+										<p class="black-text">My second game, same ideas but trying to improve the mistakes I made in my first game</p>
+									</div>		
+								</div>
+							</div>
+							
+							<!-- [1] ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+							<hr class="pb-3 p-0 m-0" style="width: 100%;">
+							
+							<!-- Texto Arriba / Izquierda -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-none d-xs-flex d-flex">
+								<div class="flex-top">
+									<div class = "container">						
+										<p class="black-text" style="font-size:30px;">The Cave</p>
+										<p class="black-text">My first game ever. I made it as soon as I learned Javascript. Just using pure HTML, CSS and Javascript</p>
+									</div>	
+								</div>
+							</div>
+
+							<!-- Juego -->
+							<div class="col-sm-6 col-12 d-flex justify-content-center pb-3">
+								<div class="view overlay zoom flex-center">
+									<a href="./_Juegos/JuegoCueva/juego.html">
+										<img class="img-fluid gameImage" src="./_Imagenes/Juegos/TheCave.png" alt="The Cave"> 
+									</a>
+								</div>
+							</div>
+							
+							<!-- Texto Derecha / Abajo -->
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-flex d-xs-none d-none">
+								<div class="flex-top">
+									<div class = "container">						
+										<p class="black-text" style="font-size:30px;">The Cave</p>
+										<p class="black-text">My first game ever. I made it as soon as I learned Javascript. Just using pure HTML, CSS and Javascript</p>
+									</div>	
+								</div>
+							</div>
+							
+							<!-- ----------------------------------------------------------------------------------------------------------------------------- -->
+							
+						</div>						
+					</div>				
+				</div>			
+			</div>		
+		</div>
+
+	</body>
+</html>
