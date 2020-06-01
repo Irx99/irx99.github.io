@@ -31,16 +31,26 @@
 			
 		  if( window.innerWidth >= 992 )
 		  {
+			document.getElementById("onResizeText").textContent = "On the right";
 			document.getElementById("scroll").style = "-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); background-color: #F5F5F5; border-radius: 4px; height:85vh; overflow-y: auto;";
 		  }
 		  else
 		  {
+			document.getElementById("onResizeText").textContent = "Below";
 			document.getElementById("scroll").style = "-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); background-color: #F5F5F5; border-radius: 4px;";
 		  }
 		  
-		  if( window.innerWidth >= 1200 )
+		  if( window.innerWidth >= 1600 )
 		  {
 			document.getElementById("mainText").style = "font-size:18px;";
+		  }
+		  else if( window.innerWidth >= 1200 )
+		  {
+			document.getElementById("mainText").style = "font-size:15px;";
+		  }
+		  else if( window.innerWidth >= 992 )
+		  {
+			document.getElementById("mainText").style = "font-size:13px;";
 		  }
 		  else
 		  {
@@ -104,12 +114,34 @@
 						<div class="col-sm-12 col-xl-11 cols-xl-offset-1 pb-3">
 							<div id="mainText" class="text-justify" style="font-size:18px;">
 							
-							For over 7 years I know I want to live from making videogames. My studies make clear I am a programmer and I truly enjoy it. My biggest aspiration is to design my own videogames in the future. Now I am looking for a place to start in this industry surrounded by professionals with the same passion as me. 
-							</br></br>
-							I have been playing videogames for as long as I can remember. I am mainly a PC player and lately I am entering to the Nintendo realm. My favorites genres are tycoon and rhyming games and I am always looking for hidden gems in the Indie scene.
-							</br></br>
-							Outside videogames I like to watch anime and I follow several podcast and content creators about comedy, technology and the internet. I try to maintain myself in good shape taking a walk everyday I can. Also, I am the introvert type, so I am not the life of the party, but of course I meet with friends once in a while.
+							Hello and welcome to my porftolio (not my curriculum). 
+							<span id="onResizeText">On the right</span> you can find all the remarkable games I have work on so far.
+							Website included, it's responsive!
+
+							</br></br>	
+
+							About the games almost all are made with Unity and C# but I also have some experience with Unreal and C++.
+							All of them are different in some way since I have always try to learn and practice new stuff. 
+							Some of them were made only by me and others were made in group.
+							Some of them are simple experiments and other are bigger works.
+							My point is that I have been doing games for long time.
+							I am confident that I'm more than ready to work in a professional environment.
+							To this day I have not any commercial game under my belt, not for lack of interest but because the difficulty to make one just with nothing.
 							
+							</br></br>
+
+							About me I can say I am one of those they call "Gamer".
+							I try to be aware of all that happens in the video games industries and to play all that call my attention.
+							Besides I watch a lot of youtube videos and some anime sporadically.
+							Of course this doesn't make me to live isolated or something like that, but it is true my friends lifestyle is similar to mine.
+							It is also remarkable that I amd very introverted.
+							I am not good dealing with large groups of person.
+
+							</br></br>
+
+							I am methodical and patient and I have been playing games for as long as I can remember.
+							For all of that I think I have a lot to contribute to this industry. 
+							And I am willing to start as soon as possible.							
 							</div>							
 						</div>
 					</div>
@@ -181,9 +213,8 @@
 								<div class="flex-top">
 									<div class = "container">
 										<p class="black-text" style="font-size:24px;">Pink Diamond</p>
-										<p class="black-text">An interactive aventure with a great mistery.
-										</br></br>
-										Winner of another Game Jam.
+										<p class="black-text">
+										An interactive aventure with a great mistery. Winner of another Game Jam.
 										</br></br>
 										I have made the design and pixel art in this one.
 										</br></br>
@@ -206,9 +237,8 @@
 								<div class="flex-top">
 									<div class = "container">
 										<p class="black-text" style="font-size:24px;">Pink Diamond</p>
-										<p class="black-text">An interactive aventure with a great mistery.
-										</br></br>
-										Winner of another Game Jam.
+										<p class="black-text">
+										An interactive aventure with a great mistery. Winner of another Game Jam.
 										</br></br>
 										I have made the design and pixel art in this one.
 										</br></br>
