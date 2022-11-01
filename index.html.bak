@@ -165,7 +165,7 @@
 							<hr class="pb-3 p-0 m-0" style="width: 100%;">
 							
 							<!-- Texto Izquierda / Arriba -->
-							<div class="col-sm-6 col-12 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-none d-xs-flex d-flex">
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-none d-xs-flex d-flex">
 								<div class="flex-top">
 									<div class = "container">
 										<p class="black-text" style="font-size:24px;">Kity Builder</p>
@@ -189,7 +189,7 @@
 							</div>
 							
 							<!-- Texto Derecha / Abajo -->
-							<div class="col-sm-6 col-12 p-0 m-0 pt-2 pb-3 d-lg-flex d-sm-flex d-xs-none d-none">
+							<div class="col-sm-6 col-12 pl-2 p-0 m-0 pt-2 pb-3 d-lg-none d-sm-flex d-xs-none d-none">
 								<div class="flex-top">
 									<div class = "container">
 										<p class="black-text" style="font-size:24px;">Kity Builder</p>
@@ -213,7 +213,7 @@
 									<div class = "container">
 										<p class="black-text" style="font-size:24px;">GLASH: De cenizero a cenicienta</p>
 										<p class="black-text">
-										Our entry in the Indie Spain Jam 2022
+										Our entry in the Indie Spain Jam III (2022)
 										</br></br>
 										We won on itch.io and we get 3th in the jury vote
 										</br></br>
@@ -256,7 +256,7 @@
 									<div class = "container">
 										<p class="black-text" style="font-size:24px;">Dueloverso</p>
 										<p class="black-text">
-										Game for Spain Game Devs Jam II.
+										Game for Spain Game Devs Jam II (2021)
 										</br></br>
 										#2 in Mechanics and Design #2 in Originality and #3 in Sound.
 										</br></br>
